@@ -15,27 +15,26 @@ $(function($) {
     }
 
     //tradingview initial off
-    $('#original').on('click', function(){
+    // $('#original').on('click', function(){
 
-        $("#tradingview").removeClass("active");
-        $("#original").addClass("active");
-        $("#tv_chart_container").css("display","none");
-        $("#chart_div").css("display","block");          
-    });
+    //     $("#tradingview").removeClass("active");
+    //     $("#original").addClass("active");
+    //     // $("#tv_chart_container").css("display","none");
+    //     $("#chart_div").css("display","block");          
+    // });
 
-    $('#tradingview').on('click', function(){
+    // $('#tradingview').on('click', function(){
 
-        $("#original").removeClass("active");
-        $("#tradingview").addClass("active");
-        $("#chart_div").css("display","none");
-        $("#tv_chart_container").css("display","block");
+    //     $("#original").removeClass("active");
+    //     $("#tradingview").addClass("active");
+    //     $("#chart_div").css("display","none");
+    //     $("#tv_chart_container").css("display","block");
 
-    });
+    // });
 
-    if ($('#tv_chart_container').length){
-
-       document.getElementById('tv_chart_container').style.display = 'none';
-    }
+    // if ($('#tv_chart_container').length){
+    //    document.getElementById('tv_chart_container').style.display = 'none';
+    // }
 
     //get url paramiter
     var getUrlParameter = function getUrlParameter(sParam) {

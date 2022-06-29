@@ -1,0 +1,7 @@
+:root {
+    --tv-color-pane-background: #202124;
+}
+
+#header-toolbar-symbol-search {
+    display: none;
+}

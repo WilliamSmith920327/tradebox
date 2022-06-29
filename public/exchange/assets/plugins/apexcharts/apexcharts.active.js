@@ -81,6 +81,6 @@ var options = {
     ]
 };
 
-var updatechartdata = new ApexCharts(document.querySelector("#chart_div"), options);
-updatechartdata.render();
+// var updatechartdata = new ApexCharts(document.querySelector("#chart_div"), options);
+// updatechartdata.render();
 

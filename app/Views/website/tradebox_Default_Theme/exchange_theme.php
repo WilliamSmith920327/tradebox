@@ -258,14 +258,7 @@
                                                     <table id="myTable<?php echo $value->id; ?>" class="table table-borderless trade-market-table display mb-0 width100percent">
                                                         <thead>
                                                             <tr>
-                                                                <th class="text-end">
-                                                                    <select class="form-control" name="sort">
-                                                                        <option value=""><?php echo display('Pair Name'); ?></option>
-                                                                        <option value=""><?php echo display('Price'); ?></option>
-                                                                        <option value=""><?php echo display('Change'); ?></option>
-                                                                    </select>
-                                                                </th>
-                                                                <th class="text-end"><?php echo display('pair'); ?></th>
+                                                                <th><?php echo display('pair'); ?></th>
                                                                 <th class="text-end"><?php echo display('price'); ?></th>
                                                                 <th class="text-end"><?php echo display('change'); ?></th>
                                                             </tr>
@@ -276,9 +269,6 @@
                                                                     if($valuep->market_symbol == $value->symbol){ 
                                                             ?>
                                                             <tr data-href="#" onclick="window.location='<?php echo base_url("exchange?market=$valuep->symbol") ?>';">
-                                                                <td>
-
-                                                                </td>
                                                                 <td>
                                                                     <div class="item-symbol d-flex align-items-center">
                                                                         <div class="favorite primary me-1">
@@ -333,15 +323,15 @@
                         </div>
                     </header>
                     <ul id="chartTab" class="justify-content-end nav nav-pills p-2 m-0">
-                        <li class="nav-item">
-                        <a class="nav-link active" href="#" id="original">Original Chart</a>
-                        </li>
-                        <li class="nav-item">
-                        <a class="nav-link" href="#" id="tradingview">TradingView Chart</a>
-                        </li>
-                    </ul>
+                              <li class="nav-item">
+                                <a class="nav-link active" href="#" id="original">Original Chart</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" href="#" id="tradingview">TradingView Chart</a>
+                              </li>
+                            </ul>
                     <!-- Chart -->
-                    <div id="chart_div"></div>
+                    <!-- <div id="chart_div"></div> -->
                     <div id="tv_chart_container"></div>
                 </div>
                 <!-- /.Chart Content -->
@@ -782,7 +772,38 @@
     <script src="<?php echo BASEPATH.'assets/js/toastr.js?v=1' ?>"></script>
     <script src="<?php echo BASEPATH.'exchange/assets/js/custom.js?v=1.0' ?>"></script>
     <script src="<?php echo BASEPATH.'exchange/assets/js/exchange.js?v=1.10' ?>"></script>
-   
+    <script type="text/javascript" src="<?php echo BASEPATH.'exchange/assets/js/charting_library/charting_library.standalone.js' ?>"></script>
+    <script type="text/javascript" src="<?php echo BASEPATH.'exchange/assets/js/datafeed.min.js' ?>"></script>
+    <!-- <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script> -->
+    <script type="text/javascript">
+        var tv = new TradingView.widget({
+            "autosize": false,
+            "symbol": "<?php echo $market_symbol ?>",
+            "interval": "D",
+            "timezone": "UTC+9",
+            "theme": "dark",
+            "style": "1",
+            "locale": "en",
+            "width": "100%",
+            "height": "520",
+            // "enable_publishing": false,
+            // "hide_top_toolbar": true,
+            // "allow_symbol_change": false,
+            "disabled_features": ['use_localstorage_for_settings'],
+            "enabled_features": ["hide_top_toolbar"],
+            "container_id": "tv_chart_container",
+            "library_path": "<?php echo BASEPATH.'exchange/assets/js/charting_library/' ?>",
+            "datafeed": new Datafeeds.UDFCompatibleDatafeed("<?php echo base_url('') ?>"),
+            "overrides": {
+                "paneProperties.vertGridProperties.color": "#363c4e",
+                "paneProperties.horzGridProperties.color": "#363c4e",
+                "symbolWatermarkProperties.transparency": 0,
+                "scalesProperties.textColor" : "#AAA",
+                "mainSeriesProperties.candleStyle.wickUpColor": '#336854',
+                "mainSeriesProperties.candleStyle.wickDownColor": '#7f323f',
+            }                
+        })
+    </script>
     </body>
     
 </html>

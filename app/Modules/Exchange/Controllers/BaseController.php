@@ -44,8 +44,6 @@ class BaseController extends Controller
 		$this->validation    =  \Config\Services::validation();
 		$this->session 		 = \Config\Services::session();
 		$this->request 		 = \Config\Services::request();
-
-		
 	}
 
 }

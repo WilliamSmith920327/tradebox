@@ -2470,7 +2470,6 @@ class HomeController extends BaseController
 
         $coinhistory   = $this->db->table('dbt_coinhistory')->select('date')->selectSum('open')->selectSum('price_high_24h')->selectSum(' price_low_24h')->selectSum('close')->where('market_symbol', $market_symbol)->groupBy('DATE(date)')->groupBy('HOUR(date)')->groupBy('MINUTE(date)')->limit(1000,0)->orderBy('date', 'asc')->get()->getResult(); 
 
-
         foreach ($coinhistory as $key => $value) {
 
             $timestamp = strtotime($value->date);
@@ -3782,4 +3781,10 @@ class HomeController extends BaseController
     }
 
     //--------------------------------------------------------------------
+    // Streaming for Trading View
+    //--------------------------------------------------------------------
+    public function stream($method) {
+        print_r($method);
+        exit;
+    }
 }
